@@ -47,14 +47,15 @@ public class WeaponSwitching : MonoBehaviour {
 
     void SelectWeapon ()
     {
-        int i = 0;
+        
         foreach (Transform weapon in transform)
         {
-            if (i == selectedWeapon)
+            int i = weapon.GetComponent<Weapon>().weaponNum;
+            if (i == selectedWeapon && weapon.GetComponent<Weapon>().pickedUp)
                 weapon.gameObject.SetActive(true);
             else
                 weapon.gameObject.SetActive(false);
-            i++;
+            
         }
     }
 }
