@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour {
+public class BossMovement : MonoBehaviour {
 	
 	Transform player;
 	PlayerHealth playerHealth;
-	EnemyHealth enemyHealth;
+	BossHealth enemyHealth;
 	NavMeshAgent nav;
 	
-	public int minRange = 15;
+	public int minRange = 30;
 	
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerHealth = player.GetComponent<PlayerHealth>();
-		enemyHealth = GetComponent <EnemyHealth>();
+		enemyHealth = GetComponent <BossHealth>();
 		nav = GetComponent<NavMeshAgent>();
 	}
 	
@@ -25,7 +25,8 @@ public class EnemyMovement : MonoBehaviour {
 		
 		//get the distance from enemey to the player
 		float distance = Vector3.Distance(transform.position, player.position);
-		Debug.Log(distance);
+		//Debug.Log(distance);
+		
 		//If the enemey and the player have health
 		if(enemyHealth.currentHealth > 0 && playerHealth.currentHealth > 0 && distance < minRange)
 		{
